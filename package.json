@@ -1,0 +1,64 @@
+{
+  "private": true,
+  "name": "wildbeast",
+  "version": "6.1.1",
+  "description": "Discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-docs": "npm run build && mkdocs serve",
+    "build": "npm run generate-command-data && npm run minify",
+    "minify": "uglifyjs --compress --mangle --toplevel --output docs/js/dist/commands.js -- docs/js/dist/commands.js.temp",
+    "test": "eslint . && mocha",
+    "dbcreate": "node src/internal/db-init.js",
+    "info-dump": "node src/internal/info-dump.js",
+    "append-command-info": "node src/internal/command-info-appender.js",
+    "generate-command-data": "npm run info-dump && npm run append-command-info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheSharks/WildBeast.git"
+  },
+  "author": "Remco Jongschaap <hello@dougley.com>",
+  "contributors": [
+    "Anthony Zaza <tony@lemonmc.com>",
+    "Curtis Fowler <caf203@gmail.com>",
+    "Linus Willner <hello@linuswillner.me>"
+  ],
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/TheSharks/WildBeast/issues"
+  },
+  "homepage": "https://docs.thesharks.xyz/",
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "fs-extra": "^7.0.0",
+    "mocha": "^5.2.0",
+    "standard": "^12.0.1",
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "@thesharks/jagtag-js": "^1.0.3",
+    "chalk": "^2.4.1",
+    "dotenv": "^6.0.0",
+    "eris": "^0.9.0",
+    "moment": "^2.22.2",
+    "superagent": "^3.8.3",
+    "ws": "^6.0.0",
+    "xml-js": "^1.6.7",
+    "youtube-dl": "^1.12.2"
+  },
+  "optionalDependencies": {
+    "arangojs": "^6.0.0",
+    "elasticsearch": "^15.1.1",
+    "eris-lavalink": "^1.0.2",
+    "hot-shots": "^5.9.0",
+    "lokijs": "^1.5.5",
+    "raven": "^2.4.0"
+  }
+}
